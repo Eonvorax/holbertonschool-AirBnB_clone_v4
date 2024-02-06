@@ -1,21 +1,19 @@
 /* global $ */
-$(document).ready(function () {
-  const amenitiesChecked = {};
+$(document).ready(() => {
+  // Object to store Amenity IDs
+  const amenities = {};
 
-  // Listen for changes on each input checkbox tag
   $('input[type="checkbox"]').change(function () {
-    const amenityId = $(this).data('id');
-    const amenityName = $(this).data('name');
+    // Taking the ID/name of the closest li element
+    const amenityId = $(this).closest('li').data('id');
+    const amenityName = $(this).closest('li').data('name');
 
-    // Check if the checkbox is checked
     if ($(this).is(':checked')) {
-      amenitiesChecked[amenityId] = amenityName;
+      amenities[amenityId] = amenityName;
     } else {
-      delete amenitiesChecked[amenityId];
+      delete amenities[amenityId];
     }
 
-    // Update the h4 tag inside the div Amenities with the list of Amenities checked
-    const amenitiesList = Object.values(amenitiesChecked).join(', ');
-    $('.amenities h4').text(amenitiesList);
+    $('.amenities h4').text(Object.values(amenities).join(', '));
   });
 });
