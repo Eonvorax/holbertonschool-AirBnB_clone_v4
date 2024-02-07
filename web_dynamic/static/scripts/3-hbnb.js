@@ -26,13 +26,15 @@ $(document).ready(() => {
   });
 
   $.ajax({
-    url: 'http://0.0.0.0:5001/api/v1/places_search/',
+    url: 'http://localhost:5001/api/v1/places_search/',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({}),
     success: function (data) {
-      // Loop through the results and create article tags for each place
-      // Fancy ternary conditions for singular words
+      console.log('Received places data:', data); // Debug : Log received data
+      // Looping through the results and creating article tags for each "place"
+      // Fancy ternary conditions for singular/plural words !
+      // As requested, the owner tag is removed
       data.forEach(place => {
         $('.places').append(`
           <article>
