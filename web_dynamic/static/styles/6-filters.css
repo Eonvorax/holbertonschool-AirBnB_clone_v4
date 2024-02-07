@@ -46,9 +46,15 @@ button:hover {
     width: 25%;
     border-right: 1px solid #DDDDDD;
 }
+
+.filters {
+    width: 50%;
+}
+
 .amenities {
     height: 100%;
-    width: 25%;
+    width: 50%;
+    display: inline-block;
 }
 
 .popover {
